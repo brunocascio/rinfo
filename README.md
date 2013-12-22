@@ -1,4 +1,0 @@
-rinfo
-=====
-
-proyecto universitario concurrente
