@@ -1,0 +1,347 @@
+programa PepeTito
+procesos
+  proceso delay( E cantidad : numero )
+  variables
+    cont : numero
+  comenzar
+    cont := 0
+    repetir (cantidad * 1000)
+      cont := cont + 1
+  fin
+  
+  proceso avanzarLector( E robotLector: numero ;E calleAct: numero ; E avAct : numero ; E calle : numero ; E avenida: numero ; ES enCurso: boolean )
+  comenzar
+
+    si robotLector = 1
+      enviarMensaje (enCurso,L1)
+      enviarMensaje (avAct , L1)
+      enviarMensaje (avenida,L1)
+      enviarMensaje (calleAct,L1)
+      enviarMensaje (calle,L1)
+    sino 
+      si robotLector = 2
+        enviarMensaje (enCurso,L2)
+        enviarMensaje (avAct , L2)
+        enviarMensaje (avenida,L2)
+        enviarMensaje (calleAct , L2)
+        enviarMensaje (calle,L2)
+      sino
+        si robotLector = 3
+          enviarMensaje (enCurso,L3)
+          enviarMensaje (avAct , L3)
+          enviarMensaje (avenida,L3)
+          enviarMensaje (calleAct , L3)
+          enviarMensaje (calle,L3)
+          recibirMensaje (enCurso,L3)
+        sino 
+          si robotLector = 4
+            enviarMensaje (enCurso,L4)
+            enviarMensaje (avAct , L4)
+            enviarMensaje (avenida,L4)
+            enviarMensaje (calleAct , L4)
+            enviarMensaje (calle,L4)
+          sino 
+            si robotLector = 5
+              enviarMensaje (enCurso,L5)
+              enviarMensaje (avAct , L5)
+              enviarMensaje (avenida,L5)
+              enviarMensaje (calleAct , L5)
+              enviarMensaje (calle,L5)
+            sino 
+              si robotLector = 6
+                enviarMensaje (enCurso,L6)
+                enviarMensaje (avAct , L6)
+                enviarMensaje (avenida,L6)
+                enviarMensaje (calleAct , L6)
+                enviarMensaje (calle,L6)
+  fin
+  
+  proceso avanzarEscritor( E robotEscritor: numero ;E calleAct: numero ; E avAct : numero ; E calle : numero ; E avenida: numero ; ES enCurso: boolean )
+  variables
+    opCode : numero
+  comenzar
+    opCode := 1
+    
+    si robotEscritor = 1
+      enviarMensaje (opCode,E1)
+      enviarMensaje (enCurso,E1)
+      enviarMensaje (avAct , E1)
+      enviarMensaje (avenida,E1)
+      enviarMensaje (calleAct,E1)
+      enviarMensaje (calle,E1)
+    sino 
+      si robotEscritor = 2
+        enviarMensaje (opCode,E2)
+        enviarMensaje (enCurso,E2)
+        enviarMensaje (avAct , E2)
+        enviarMensaje (avenida,E2)
+        enviarMensaje (calleAct , E2)
+        enviarMensaje (calle,E2)
+      sino
+        si robotEscritor = 3
+          enviarMensaje (opCode,E3)
+          enviarMensaje (enCurso,E3)
+          enviarMensaje (avAct , E3)
+          enviarMensaje (avenida,E3)
+          enviarMensaje (calleAct , E3)
+          enviarMensaje (calle,E3)
+  fin
+
+  proceso depositaEscritor( E numEscritor : numero; E avAct : numero ; E avenida: numero ; ES enCurso : boolean )
+  variables
+    deltaX: numero
+    opCode: numero
+  comenzar
+    opCode := 2
+ {   Informar(110,opCode) }
+ {   Informar(110,enCurso)
+ {   derecha  posiciono el robot apuntando a la derecha para mover }
+    deltaX := avenida - avAct
+ {   Informar(110,deltaX) }
+    Informar(PosAv,PosCa)
+    si numEscritor = 1
+      enviarMensaje(opCode,E1)
+      Informar(1,V)
+      enviarMensaje(enCurso,E1)
+      Informar(2,V)
+      enviarMensaje(deltaX, E1)
+      Informar(3,V) 
+  fin
+  
+areas
+  compartida: areaC (15, 2, 20, 3) 
+  parcComp: areaPC (1,1, 100, 100) 
+robots 
+  robot lector
+  variables
+    deltaX      : numero
+    deltaY      : numero
+    calle       : numero
+    calleAct    : numero
+    avAct       : numero
+    avenida     : numero
+    isNegativoX : boolean
+    isNegativoY : boolean
+    delayVal    : numero
+    enCurso     : boolean
+  comenzar
+    recibirMensaje (enCurso,R0)
+    
+    mientras enCurso
+      recibirMensaje (avAct , R0)
+      recibirMensaje (avenida,R0)
+      recibirMensaje (calleAct , R0)
+      recibirMensaje (calle,R0)
+      
+      si avenida > avAct
+        deltaX := avenida - avAct
+        isNegativoX := F
+      sino
+        deltaX := avAct - avenida
+        isNegativoX := V
+      
+      si calle > calleAct
+        deltaY := calle - calleAct
+        isNegativoY := F
+      sino
+        deltaY := calleAct - calle
+        isNegativoY := V
+       
+      si (isNegativoX)
+        repetir 3
+          derecha
+      sino
+        derecha
+       
+      repetir deltaX
+        mover
+         
+      si isNegativoX
+        derecha
+      sino
+        repetir 3
+          mover
+      si (isNegativoY)
+        repetir 2
+          derecha
+      repetir deltaY
+        mover
+      si (isNegativoY)
+        repetir 2
+          derecha
+      enCurso := F
+      enviarMensaje (enCurso,R0)  
+  fin
+  
+  robot escritor
+  variables
+    deltaX      : numero
+    deltaY      : numero
+    calle       : numero
+    calleAct    : numero
+    avAct       : numero
+    avenida     : numero
+    isNegativoX : boolean
+    isNegativoY : boolean
+    delayVal    : numero
+    enCurso     : boolean
+    opCode      : numero  
+  comenzar
+    recibirMensaje(opCode,R0)
+    Informar(115,opCode)
+    si opCode = 1
+     { recibe los datos de la calle y avenida adonde debe ir }
+      recibirMensaje (enCurso,R0)
+      mientras enCurso
+        recibirMensaje (avAct , R0)
+        recibirMensaje (avenida,R0)
+        recibirMensaje (calleAct , R0)
+        recibirMensaje (calle,R0)
+       
+ { Informar( avAct, avenida, calleAct, calle) }
+      
+        si avenida > avAct
+          deltaX := avenida - avAct
+          isNegativoX := F
+        sino
+          deltaX := avAct - avenida
+          isNegativoX := V
+     
+        si calle > calleAct
+          deltaY := calle - calleAct
+          isNegativoY := F
+        sino
+          deltaY := calleAct - calle
+          isNegativoY := V
+              
+{ Informar( deltaX, isNegativoX, deltaY, isNegativoY) }
+        si (isNegativoX)
+          repetir 3
+            derecha
+        sino
+          derecha
+        
+        repetir deltaX
+          mover
+        
+        si (isNegativoX)
+          derecha
+        sino
+          repetir 3
+            mover
+
+        si (isNegativoY)
+          repetir 2
+            derecha
+        
+        repetir deltaY
+          mover
+        
+        si (isNegativoY)
+          repetir 2
+            derecha
+               
+        enCurso := F
+        enviarMensaje (enCurso,R0)
+    sino
+      si opCode = 2
+        derecha
+        Informar(120,opCode)
+        recibirMensaje (enCurso,R0)
+        Informar(120,enCurso)
+        recibirMensaje (deltaX, R0)
+        Informar(120,deltaX)
+        mientras enCurso
+          repetir deltaX
+            Informar (130,deltaX)
+            bloquearEsquina(PosAv,PosCa)
+            depositarFlor
+            liberarEsquina(PosAv,PosCa)
+            mover
+          enCurso := F
+          enviarMensaje (enCurso,R0)
+  fin
+  
+  robot organizador
+  variables 
+    semaforoLectura: boolean 
+    semaforoEscritura: boolean
+    enCurso: boolean
+    dummy : numero 
+  comenzar 
+    semaforoLectura := V 
+    semaforoEscritura := V
+    enCurso := V
+    avanzarEscritor(1,60,60,2,15,enCurso)
+    mientras enCurso
+      recibirMensaje(enCurso,E1)
+    
+    enCurso := V
+    avanzarEscritor(1,2,15,2,20,enCurso)
+    mientras enCurso
+      recibirMensaje(enCurso,E1)
+    
+    enCurso := V
+    Informar(100,enCurso) 
+    depositaEscritor(1, 15, 20,enCurso)
+    Informar(4,V)
+    Informar(5,enCurso)
+{    mientras enCurso }
+{      recibirMensaje(enCurso,E1) }
+{      Informar(200,enCurso) }
+      
+    enCurso := V 
+    avanzarLector(1,50,50,2,16,enCurso)
+    
+    mientras enCurso
+      recibirMensaje(enCurso,L1)
+         
+{    enCurso := V }
+{    avanzarLector(2,51,51,2,16,enCurso) }
+  fin
+  
+  robot semaforo
+  variables
+    semaforoLectura    : boolean 
+    semaforoEscritura  : boolean
+    operacion           : numero
+  comenzar
+    semaforoEscritura := F    
+    semaforoLectura := F
+    
+    {Robot Lectores}
+    recibirMensaje(operacion,L1) { Recibe el tipo de operacion }
+    si operacion = 1 { si es consulta de escritura (chequea semaforoEscritura) }
+      enviarMensaje(semaforoEscritura, L1)
+    sino { si es para encender semaforoLectura }
+      recibirMensaje(bloquear, L1)
+      semaforoLectura := bloquear
+    
+    {Robot Escritores}
+    recibirMensaje(operacion, E1) { Recibe el tipo de operacion }
+    si operacion = 1 { si es consulta de lectura (chequea semaforoLectura) }
+      enviarMensaje(semaforoLectura, E1)
+    sino { si es para encender semaforoEscritura }
+      mientras semaforoEscritura { Evita que otro robot cambie el estado del semaforo, cuando se encuentra a la espera }
+        semaforoEscritura := V
+      semaforoEscritura := bloquear
+  fin
+  
+variables
+  L1: lector
+  L2: lector
+  R0: organizador
+  S0: semaforo
+  E1: escritor
+comenzar
+  AsignarArea (R0, parcComp)
+  AsignarArea (S0, parcComp)
+  AsignarArea (E1, parcComp)
+  AsignarArea (L1, parcComp)
+  AsignarArea (L2, parcComp)
+  iniciar (R0, 61, 61)
+  iniciar (S0, 52, 52)
+  iniciar (E1, 60, 60)
+  iniciar (L1, 50, 50)
+  iniciar (L2, 51, 51)
+fin
