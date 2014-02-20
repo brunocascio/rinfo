@@ -1,0 +1,157 @@
+programa ADP  
+areas 
+  zonaC : areaC(15,2,20,3) 
+  zonaPC : areaPC(1,1,99,99) 
+robots
+  robot organizador
+  variables
+  	{ Estado de los semáforos de los robots }
+  	SL1: boolean
+  	SE1: boolean
+  	{ Resultados para los diferentes robots }
+  	RL1: boolean
+  	RE1: boolean
+  	OP : numero { Numero de operacion a realizar }
+  comenzar
+  	recibirMensaje(ID,*)
+  	{ Robot Lector1 }
+  	Si ( ID = 1 )
+  		recibirMensaje(OP,L1)
+  		Si ( OP = 7 ) { Pedir permiso }
+  			RL1 := SE1
+  			enviarMensaje(RL1,L1) { Envia el estado de los robots }
+  		Sino
+  			Si ( OP = 8 ) { Entrar }
+  				SL1 := V
+  			Sino
+  				Si ( OP = 9 ) { Salir }
+  					SL1 := F
+		Si ( ID = 10 )
+			recibirMensaje(OP,E1)
+  		Si ( OP = 7 ) { Pedir permiso }
+  			RE1 := SL1
+  			enviarMensaje(RE1,E1) { Envia el estado de los robots }
+  		Sino
+  			Si ( OP = 8 ) { Entrar }
+  				SE1 := V
+  			Sino
+  				Si ( OP = 9 ) { Salir }
+  					SE1 := F
+  fin
+  robot lector1
+  variables
+  	permisoL1: boolean
+  comenzar
+		{-}  	
+  	{ PIDO PERMISO PARA ENTRAR }
+		{-} 		
+ 		enviarMensaje(1,O) { envia identificador propio }
+		enviarMensaje(7,O) { envia la operacion para pedir permiso }
+		recibirMensaje(permisoL1,O)
+		mientras (permisoL1 = V) { Mientras no tengo permiso, lo sigo solicitando }
+			enviarMensaje(1,O)
+			enviarMensaje(7,O)
+			recibirMensaje(permisoL1,O)
+		{-}			
+		{ concedido el permiso, va a recolectar a la esquina }
+		{-}		
+    repetir 3
+      derecha
+    repetir 35
+      mover
+    repetir 3
+      derecha
+    repetir 48
+      mover
+		{-}		
+		{ ---- RECOLECTANDO :) ---- }
+		{-}		
+		enviarMensaje(1,O)
+		enviarMensaje(8,O) { Envio señal para entrar }
+		Si HayFlorEnLaEsquina
+			tomarFlor
+		{-}			
+		{ Vuelvo al lugar de partida }
+		{-}		
+    repetir 3
+      derecha
+    repetir 35
+      mover
+    repetir 3
+      derecha
+    repetir 48
+      mover
+		{-}    
+    { Avisa al organizador para salida }
+		{-}    
+    enviarMensaje(1,O)
+    enviarMensaje(9,O)
+  fin
+  
+  robot escritor1
+  variables
+  	permisoE1: boolean
+  	plantadas:numero
+  comenzar
+  	numero := 0
+		{-}  	
+    { PIDO PERMISO PARA ENTRAR }
+		{-} 		
+ 		enviarMensaje(10,O) { envia identificador propio }
+		enviarMensaje(7,O) { envia la operacion para pedir permiso }
+		recibirMensaje(permisoE1,O)
+		mientras (permisoE1 = V) { Mientras no tengo permiso, lo sigo solicitando }
+			enviarMensaje(10,O)
+			enviarMensaje(7,O)
+			recibirMensaje(permisoE1,O)
+		{-}						
+		{ concedido el permiso, va a sembrar a la esquina }
+		{-}		
+    repetir 3
+      derecha
+    repetir 45
+      mover
+    repetir 3
+      derecha
+    repetir 58
+      mover
+    repetir 3
+      derecha
+		{-}      
+    { empieza el sembrado :) }
+		{-}
+    enviarMensaje(10,O)
+    enviarMensaje(8,O) { Envio señal para entrar }
+    mientras plantadas < 5
+      bloquearEsquina(PosAv,PosCa)
+      depositarFlor
+      liberarEsquina(PosAv,PosCa)
+      plantadas := plantadas + 1
+      mover
+		{-}    
+    { Vuelvo al lugar de partida }		
+		{-}
+    repetir 40
+      mover
+    repetir 3
+      derecha
+    repetir 58
+      mover
+		{-}
+    { Avisa al organizador para salida }
+    {-}
+    enviarMensaje(10,O)
+    enviarMensaje(9,O)
+  fin
+variables  
+  E1: escritor1
+  L1: lector1
+  O: organizador
+comenzar  
+  AsignarArea(E1,zonaPC)
+  AsignarArea(O,zonaPC)
+  AsignarArea(L1,zonaPC)
+  iniciar(O, 90, 90)
+  iniciar(E1, 60, 60)
+  iniciar(L1, 50, 50)
+fin
