@@ -15,27 +15,27 @@ robots
   comenzar
   	recibirMensaje(ID,*)
   	{ Robot Lector1 }
-  	Si ( ID = 1 )
+  	si ( ID = 1 )
   		recibirMensaje(OP,L1)
-  		Si ( OP = 7 ) { Pedir permiso }
+  		si ( OP = 7 ) { Pedir permiso }
   			RL1 := SE1
   			enviarMensaje(RL1,L1) { Envia el estado de los robots }
-  		Sino
-  			Si ( OP = 8 ) { Entrar }
+  		sino
+  			si ( OP = 8 ) { Entrar }
   				SL1 := V
-  			Sino
-  				Si ( OP = 9 ) { Salir }
+  			sino
+  				si ( OP = 9 ) { Salir }
   					SL1 := F
-		Si ( ID = 10 )
+		si ( ID = 10 )
 			recibirMensaje(OP,E1)
-  		Si ( OP = 7 ) { Pedir permiso }
+  		si ( OP = 7 ) { Pedir permiso }
   			RE1 := SL1
   			enviarMensaje(RE1,E1) { Envia el estado de los robots }
-  		Sino
-  			Si ( OP = 8 ) { Entrar }
+  		sino
+  			si ( OP = 8 ) { Entrar }
   				SE1 := V
-  			Sino
-  				Si ( OP = 9 ) { Salir }
+  			sino
+  				si ( OP = 9 ) { Salir }
   					SE1 := F
   fin
   robot lector1
@@ -68,7 +68,7 @@ robots
 		{-}		
 		enviarMensaje(1,O)
 		enviarMensaje(8,O) { Envio señal para entrar }
-		Si HayFlorEnLaEsquina
+		si HayFlorEnLaEsquina
 			tomarFlor
 		{-}			
 		{ Vuelvo al lugar de partida }
