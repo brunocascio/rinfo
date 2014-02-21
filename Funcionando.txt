@@ -26,8 +26,7 @@ robots
     RE1: boolean   
     RE2: boolean   
     RE3: boolean   
-    op: numero { Numero de operacion a realizar }   
-    iO: numero   
+    op: numero { Numero de operacion a realizar }    
   comenzar   
     repetir 27   
       recibirMensaje(ID,*)   
@@ -158,8 +157,7 @@ robots
   fin   
   robot lector1   
   variables   
-    permisoL1: boolean   
-    valor: numero   
+    permisoL1: boolean    
   comenzar   
     {-}       
     { PIDO PERMISO PARA ENTRAR }   
@@ -200,8 +198,7 @@ robots
   fin   
   robot lector2   
   variables   
-    permisoL2: boolean   
-    valor: numero   
+    permisoL2: boolean     
   comenzar   
     repetir 3   
       {-}       
@@ -243,8 +240,7 @@ robots
   {-}   
   robot lector3   
   variables   
-    permisoL3: boolean   
-    valor: numero   
+    permisoL3: boolean     
   comenzar   
     repetir 3   
       {-}       
@@ -285,8 +281,7 @@ robots
   fin   
   robot lector4   
   variables   
-    permisoL4: boolean   
-    valor: numero   
+    permisoL4: boolean    
   comenzar   
     {-}       
     { PIDO PERMISO PARA ENTRAR }   
@@ -327,8 +322,7 @@ robots
   fin   
   robot lector5   
   variables   
-    permisoL5: boolean   
-    valor: numero   
+    permisoL5: boolean     
   comenzar   
     repetir 3   
       {-}       
@@ -369,8 +363,7 @@ robots
   fin   
   robot lector6   
   variables   
-    permisoL6: boolean   
-    valor: numero   
+    permisoL6: boolean      
   comenzar   
     repetir 3   
       {-}       
