@@ -15,6 +15,7 @@ robots
     SL6: boolean
     SE1: boolean
     SE2: boolean
+    SE3: boolean
     { Resultados para los diferentes robots }
     RL1: boolean
     RL2: boolean
@@ -24,6 +25,7 @@ robots
     RL6: boolean
     RE1: boolean
     RE2: boolean
+    RE3: boolean
     op: numero { Numero de operacion a realizar }
   comenzar
     recibirMensaje(ID,L1)
@@ -33,9 +35,9 @@ robots
       recibirMensaje(op,L1)
       Informar(V)
       si ( op = 7 ) { Pedir permiso }
-        RL1 := ( SE1 | SE2 )
+        RL1 := ( SE1 | SE2 | SE3 )
         mientras (RL1 = V )
-          RL1 := ( SE1 | SE2 )
+          RL1 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL1,L1) { Envia el estado de los robots }
       recibirMensaje(op,L1)
       Informar(op)
@@ -53,9 +55,9 @@ robots
       recibirMensaje(op,L2)
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
-        RL2 := ( SE1 | SE2 )
+        RL2 := ( SE1 | SE2 | SE3 )
         mientras (RL2 = V )
-          RL2 := ( SE1 | SE2 )
+          RL2 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL2,L2) { Envia el estado de los robots }
       recibirMensaje(op,L2)
       Informar(op)
@@ -72,9 +74,9 @@ robots
       recibirMensaje(op,L3)
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
-        RL3 := ( SE1 | SE2 )
+        RL3 := ( SE1 | SE2 | SE3 )
         mientras (RL3 = V )
-          RL3 := ( SE1 | SE2 )
+          RL3 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL3,L3) { Envia el estado de los robots }
       recibirMensaje(op,L3)
       Informar(op)
@@ -91,9 +93,9 @@ robots
       recibirMensaje(op,L4)
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
-        RL4 := ( SE1 | SE2 )
+        RL4 := ( SE1 | SE2 | SE3 )
         mientras (RL4 = V )
-          RL4 := ( SE1 | SE2 )
+          RL4 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL4,L4) { Envia el estado de los robots }
       recibirMensaje(op,L4)
       Informar(op)
@@ -110,9 +112,9 @@ robots
       recibirMensaje(op,L5)
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
-        RL5 := ( SE1 | SE2 )
+        RL5 := ( SE1 | SE2 | SE3 )
         mientras (RL5 = V )
-          RL5 := ( SE1 | SE2 )
+          RL5 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL5,L5) { Envia el estado de los robots }
       recibirMensaje(op,L5)
       Informar(op)
@@ -129,9 +131,9 @@ robots
       recibirMensaje(op,L6)
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
-        RL6 := ( SE1 | SE2 )
+        RL6 := ( SE1 | SE2 | SE3 )
         mientras (RL6 = V )
-          RL6 := ( SE1 | SE2 )
+          RL6 := ( SE1 | SE2 | SE3 )
         enviarMensaje(RL6,L6) { Envia el estado de los robots }
       recibirMensaje(op,L6)
       Informar(op)
@@ -148,10 +150,10 @@ robots
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
 {      	Informar(SE1)}
-        RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 )
+        RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 | SE3 )
         Informar(34)
         mientras (RE1 = V )
-          RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 )
+          RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 | SE3 )
         enviarMensaje(RE1,E1) { Envia el estado de los robots }
       recibirMensaje(op,E1)
       Informar(op)
@@ -168,10 +170,10 @@ robots
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
 {      	Informar(SE2)}
-        RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 )
+        RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE3 )
         Informar(34)
         mientras (RE2 = V )
-          RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 )
+          RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE3 )
         enviarMensaje(RE2,E2) { Envia el estado de los robots }
       recibirMensaje(op,E2)
       Informar(op)
@@ -181,6 +183,26 @@ robots
       Informar(op)
       si ( op = 9 ) { Salir }
         SE2 := F
+	  recibirMensaje(ID,E3) 
+  	Informar(ID) 
+    si ( ID = 12 )
+      recibirMensaje(op,E3)
+      Informar(op)
+      si ( op = 7 ) { Pedir permiso }
+{      	Informar(SE2)}
+        RE3 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE2 )
+        Informar(34)
+        mientras (RE3 = V )
+          RE3 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE2 )
+        enviarMensaje(RE3,E3) { Envia el estado de los robots }
+      recibirMensaje(op,E3)
+      Informar(op)
+      si ( op = 8 ) { Entrar }
+        SE3 := V
+      recibirMensaje(op,E3)
+      Informar(op)
+      si ( op = 9 ) { Salir }
+        SE3 := F
   fin
   robot lector1
   variables
@@ -566,9 +588,65 @@ robots
       enviarMensaje(9,O)
       {-}    
   fin
+  robot escritor3
+  variables
+    permisoE3: boolean
+    plantadas3:numero
+  comenzar
+    plantadas3 := 0
+    {-}    
+    { PIDO PERMISO PARA ENTRAR }
+    {-}     
+    enviarMensaje(12,O) { envia identificador propio }
+    enviarMensaje(7,O) { envia la operacion para pedir permiso }
+    recibirMensaje(permisoE3,O)
+    {-}            
+    { concedido el permiso, va a sembrar a la esquina }
+    {-}
+    si ( permisoE3 = F )
+      repetir 3
+        derecha
+      repetir 45
+        mover
+      repetir 3
+        derecha
+      repetir 60
+        mover
+      repetir 3
+        derecha
+      {-}      
+      { empieza el sembrado :) }
+      {-}
+      enviarMensaje(8,O) { Envio seÃ±al para entrar }
+      mientras plantadas3 < 6
+        bloquearEsquina(PosAv,PosCa)
+        depositarFlor
+        liberarEsquina(PosAv,PosCa)
+        plantadas3 := plantadas3 + 1
+        mover
+        {-}
+      { Vuelvo al lugar de partida }    
+      {-}
+      repetir 40
+        mover
+      repetir 3
+        derecha
+      repetir 60
+        mover
+      {Lo deposito en su esquina inicial mirando al norte}
+      repetir 3
+        derecha
+      mover
+      derecha
+      { Avisa al organizador para salida }
+      {-}
+      enviarMensaje(9,O)
+      {-}    
+  fin
 variables  
   E1: escritor1
   E2: escritor2
+  E3: escritor3
   L1: lector1
   L2: lector2
   L3: lector3
@@ -579,6 +657,7 @@ variables
 comenzar  
   AsignarArea(E1,zonaPC)
   AsignarArea(E2,zonaPC)
+  AsignarArea(E3,zonaPC)
   AsignarArea(O,zonaPC)
   AsignarArea(L1,zonaPC)
   AsignarArea(L2,zonaPC)
@@ -589,6 +668,7 @@ comenzar
   iniciar(O, 90, 90)
   iniciar(E1, 60, 60)
   iniciar (E2, 60, 61)
+  iniciar (E3, 60, 62)
   iniciar(L1, 50, 50)
   iniciar(L2, 51, 51)
   iniciar(L3, 52, 52)
