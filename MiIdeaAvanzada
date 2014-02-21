@@ -27,194 +27,194 @@ robots
     RE2: boolean
     RE3: boolean
     op: numero { Numero de operacion a realizar }
+    iO: numero
   comenzar
-    recibirMensaje(ID,L1)
-    { Robot Lector1 }
-    Informar(ID)
-    si ( ID = 1 )
-      recibirMensaje(op,L1)
-      Informar(V)
-      si ( op = 7 ) { Pedir permiso }
-        RL1 := ( SE1 | SE2 | SE3 )
-        mientras (RL1 = V )
+    repetir 3
+      recibirMensaje(ID,L1)
+      { Robot Lector1 }
+      Informar(ID)
+      si ( ID = 1 )
+        recibirMensaje(op,L1)
+        Informar(V)
+        si ( op = 7 ) { Pedir permiso }
           RL1 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL1,L1) { Envia el estado de los robots }
-      recibirMensaje(op,L1)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL1 := V
-        Informar(SL1)
-      recibirMensaje(op,L1)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL1 := F
-    recibirMensaje(ID,L2)
-    { Robot Lector2 }
-    Informar(ID)
-    si ( ID = 2 )
-      recibirMensaje(op,L2)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-        RL2 := ( SE1 | SE2 | SE3 )
-        mientras (RL2 = V )
+          mientras (RL1 = V )
+            RL1 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL1,L1) { Envia el estado de los robots }
+        recibirMensaje(op,L1)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL1 := V
+          Informar(SL1)
+        recibirMensaje(op,L1)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL1 := F
+      recibirMensaje(ID,L2)
+      { Robot Lector2 }
+      Informar(ID)
+      si ( ID = 2 )
+        recibirMensaje(op,L2)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
           RL2 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL2,L2) { Envia el estado de los robots }
-      recibirMensaje(op,L2)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL2 := V
-      recibirMensaje(op,L2)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL2 := F
-    recibirMensaje(ID,L3)
-    { Robot Lector3 }
-    Informar(ID)
-    si ( ID = 3 )
-      recibirMensaje(op,L3)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-        RL3 := ( SE1 | SE2 | SE3 )
-        mientras (RL3 = V )
+          mientras (RL2 = V )
+            RL2 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL2,L2) { Envia el estado de los robots }
+        recibirMensaje(op,L2)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL2 := V
+        recibirMensaje(op,L2)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL2 := F
+      recibirMensaje(ID,L3)
+      { Robot Lector3 }
+      Informar(ID)
+      si ( ID = 3 )
+        recibirMensaje(op,L3)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
           RL3 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL3,L3) { Envia el estado de los robots }
-      recibirMensaje(op,L3)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL3 := V
-      recibirMensaje(op,L3)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL3 := F
-    recibirMensaje(ID,L4)
-    { Robot Lector4 }
-    Informar(ID)
-    si ( ID = 4 )
-      recibirMensaje(op,L4)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-        RL4 := ( SE1 | SE2 | SE3 )
-        mientras (RL4 = V )
+          mientras (RL3 = V )
+            RL3 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL3,L3) { Envia el estado de los robots }
+        recibirMensaje(op,L3)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL3 := V
+        recibirMensaje(op,L3)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL3 := F
+      recibirMensaje(ID,L4)
+      { Robot Lector4 }
+      Informar(ID)
+      si ( ID = 4 )
+        recibirMensaje(op,L4)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
           RL4 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL4,L4) { Envia el estado de los robots }
-      recibirMensaje(op,L4)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL4 := V
-      recibirMensaje(op,L4)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL4 := F
-    recibirMensaje(ID,L5)
-    { Robot Lector5 }
-    Informar(ID)
-    si ( ID = 5 )
-      recibirMensaje(op,L5)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-        RL5 := ( SE1 | SE2 | SE3 )
-        mientras (RL5 = V )
+          mientras (RL4 = V )
+            RL4 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL4,L4) { Envia el estado de los robots }
+        recibirMensaje(op,L4)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL4 := V
+        recibirMensaje(op,L4)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL4 := F
+      recibirMensaje(ID,L5)
+      { Robot Lector5 }
+      Informar(ID)
+      si ( ID = 5 )
+        recibirMensaje(op,L5)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
           RL5 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL5,L5) { Envia el estado de los robots }
-      recibirMensaje(op,L5)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL5 := V
-      recibirMensaje(op,L5)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL5 := F
-    recibirMensaje(ID,L6)
-    { Robot Lector6 }
-    Informar(ID)
-    si ( ID = 6 )
-      recibirMensaje(op,L6)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-        RL6 := ( SE1 | SE2 | SE3 )
-        mientras (RL6 = V )
+          mientras (RL5 = V )
+            RL5 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL5,L5) { Envia el estado de los robots }
+        recibirMensaje(op,L5)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL5 := V
+        recibirMensaje(op,L5)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL5 := F
+      recibirMensaje(ID,L6)
+      { Robot Lector6 }
+      Informar(ID)
+      si ( ID = 6 )
+        recibirMensaje(op,L6)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
           RL6 := ( SE1 | SE2 | SE3 )
-        enviarMensaje(RL6,L6) { Envia el estado de los robots }
-      recibirMensaje(op,L6)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SL6 := V
-      recibirMensaje(op,L6)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SL6 := F
-	  recibirMensaje(ID,E1) 
-  	Informar(ID) 
-    si ( ID = 10 )
-      recibirMensaje(op,E1)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-{      	Informar(SE1)}
-        RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 | SE3 )
-        Informar(34)
-        mientras (RE1 = V )
+          mientras (RL6 = V )
+            RL6 := ( SE1 | SE2 | SE3 )
+          enviarMensaje(RL6,L6) { Envia el estado de los robots }
+        recibirMensaje(op,L6)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SL6 := V
+        recibirMensaje(op,L6)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SL6 := F
+      recibirMensaje(ID,E1) 
+      Informar(ID) 
+      si ( ID = 10 )
+        recibirMensaje(op,E1)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
+  {        Informar(SE1)}
           RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 | SE3 )
-        enviarMensaje(RE1,E1) { Envia el estado de los robots }
-      recibirMensaje(op,E1)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SE1 := V
-      recibirMensaje(op,E1)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SE1 := F
-	  recibirMensaje(ID,E2) 
-  	Informar(ID) 
-    si ( ID = 11 )
-      recibirMensaje(op,E2)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-{      	Informar(SE2)}
-        RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE3 )
-        Informar(34)
-        mientras (RE2 = V )
+          Informar(34)
+          mientras (RE1 = V )
+            RE1 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE2 | SE3 )
+          enviarMensaje(RE1,E1) { Envia el estado de los robots }
+        recibirMensaje(op,E1)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SE1 := V
+        recibirMensaje(op,E1)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SE1 := F
+      recibirMensaje(ID,E2) 
+      Informar(ID) 
+      si ( ID = 11 )
+        recibirMensaje(op,E2)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
+  {        Informar(SE2)}
           RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE3 )
-        enviarMensaje(RE2,E2) { Envia el estado de los robots }
-      recibirMensaje(op,E2)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SE2 := V
-      recibirMensaje(op,E2)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SE2 := F
-	  recibirMensaje(ID,E3) 
-  	Informar(ID) 
-    si ( ID = 12 )
-      recibirMensaje(op,E3)
-      Informar(op)
-      si ( op = 7 ) { Pedir permiso }
-{      	Informar(SE2)}
-        RE3 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE2 )
-        Informar(34)
-        mientras (RE3 = V )
+          Informar(34)
+          mientras (RE2 = V )
+            RE2 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE3 )
+          enviarMensaje(RE2,E2) { Envia el estado de los robots }
+        recibirMensaje(op,E2)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SE2 := V
+        recibirMensaje(op,E2)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SE2 := F
+      recibirMensaje(ID,E3) 
+      Informar(ID) 
+      si ( ID = 12 )
+        recibirMensaje(op,E3)
+        Informar(op)
+        si ( op = 7 ) { Pedir permiso }
+  {        Informar(SE2)}
           RE3 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE2 )
-        enviarMensaje(RE3,E3) { Envia el estado de los robots }
-      recibirMensaje(op,E3)
-      Informar(op)
-      si ( op = 8 ) { Entrar }
-        SE3 := V
-      recibirMensaje(op,E3)
-      Informar(op)
-      si ( op = 9 ) { Salir }
-        SE3 := F
+          Informar(34)
+          mientras (RE3 = V )
+            RE3 := ( SL1 | SL2 | SL3 | SL4 | SL5 | SL6 | SE1 | SE2 )
+          enviarMensaje(RE3,E3) { Envia el estado de los robots }
+        recibirMensaje(op,E3)
+        Informar(op)
+        si ( op = 8 ) { Entrar }
+          SE3 := V
+        recibirMensaje(op,E3)
+        Informar(op)
+        si ( op = 9 ) { Salir }
+          SE3 := F
   fin
   robot lector1
   variables
     permisoL1: boolean
     valor: numero
-    contadorL1: numero
   comenzar
     {-}    
     { PIDO PERMISO PARA ENTRAR }
     {-}     
-    contadorL1 := 0
-    mientras (contadorL1 < 3) 
+    repetir 3
       enviarMensaje(1,O) { envia identificador propio }
       enviarMensaje(7,O) { envia la operacion para pedir permiso }
       recibirMensaje(permisoL1,O)
@@ -236,7 +236,6 @@ robots
         enviarMensaje(8,O) { Envio seÃ±al para entrar }
         si HayFlorEnLaEsquina
           tomarFlor
-          contadorL1:= contadorL1 +1
            {-}    
         {-}      
         { Vuelvo al lugar de partida }
@@ -253,395 +252,399 @@ robots
         {-}    
         enviarMensaje(9,O)
   fin
-	robot lector2
+  robot lector2
   variables
     permisoL2: boolean
     valor: numero
   comenzar
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(2,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoL2,O)
-    {-}      
-    { concedido el permiso, va a recolectar a la esquina }
-    {-}
-    si (permisoL2 = F )
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 49
-        mover
+    repetir 3
       {-}    
-      { ---- RECOLECTANDO :) ---- }
-      {-}    
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      si HayFlorEnLaEsquina
-        tomarFlor
-         {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(2,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoL2,O)
       {-}      
-      { Vuelvo al lugar de partida }
-      {-}    
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 49
-        mover
-      { Avisa al organizador para salida }
-      {-}    
-      enviarMensaje(9,O)
+      { concedido el permiso, va a recolectar a la esquina }
+      {-}
+      si (permisoL2 = F )
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 49
+          mover
+        {-}    
+        { ---- RECOLECTANDO :) ---- }
+        {-}    
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        si HayFlorEnLaEsquina
+          tomarFlor
+           {-}    
+        {-}      
+        { Vuelvo al lugar de partida }
+        {-}    
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 49
+          mover
+        { Avisa al organizador para salida }
+        {-}    
+        enviarMensaje(9,O)
   fin
   {-}
   robot lector3
   variables
     permisoL3: boolean
     valor: numero
-    contadorL3: numero
   comenzar
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(3,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoL3,O)
-    {-}      
-    { concedido el permiso, va a recolectar a la esquina }
-    {-}
-    si (permisoL3 = F )
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 50
-        mover
+    repetir 3
       {-}    
-      { ---- RECOLECTANDO :) ---- }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      si HayFlorEnLaEsquina
-        tomarFlor
-         {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(3,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoL3,O)
       {-}      
-      { Vuelvo al lugar de partida }
-      {-}    
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 50
-        mover
-      { Avisa al organizador para salida }
-      {-}    
-      enviarMensaje(9,O)
+      { concedido el permiso, va a recolectar a la esquina }
+      {-}
+      si (permisoL3 = F )
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 50
+          mover
+        {-}    
+        { ---- RECOLECTANDO :) ---- }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        si HayFlorEnLaEsquina
+          tomarFlor
+           {-}    
+        {-}      
+        { Vuelvo al lugar de partida }
+        {-}    
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 50
+          mover
+        { Avisa al organizador para salida }
+        {-}    
+        enviarMensaje(9,O)
   fin
   robot lector4
   variables
     permisoL4: boolean
     valor: numero
-    contadorL4: numero
   comenzar
     {-}    
     { PIDO PERMISO PARA ENTRAR }
     {-}     
-    enviarMensaje(4,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoL4,O)
-    {-}      
-    { concedido el permiso, va a recolectar a la esquina }
-    {-}
-    si (permisoL4 = F )
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 51
-        mover
-      {-}    
-      { ---- RECOLECTANDO :) ---- }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      si HayFlorEnLaEsquina
-        tomarFlor
-         {-}    
+    repetir 3
+      enviarMensaje(4,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoL4,O)
       {-}      
-      { Vuelvo al lugar de partida }
-      {-}    
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 51
-        mover
-      { Avisa al organizador para salida }
-      {-}    
-      enviarMensaje(9,O)
+      { concedido el permiso, va a recolectar a la esquina }
+      {-}
+      si (permisoL4 = F )
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 51
+          mover
+        {-}    
+        { ---- RECOLECTANDO :) ---- }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        si HayFlorEnLaEsquina
+          tomarFlor
+           {-}    
+        {-}      
+        { Vuelvo al lugar de partida }
+        {-}    
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 51
+          mover
+        { Avisa al organizador para salida }
+        {-}    
+        enviarMensaje(9,O)
   fin
   robot lector5
   variables
     permisoL5: boolean
     valor: numero
-    contadorL5: numero
   comenzar
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(5,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoL5,O)
-    {-}      
-    { concedido el permiso, va a recolectar a la esquina }
-    {-}
-    si (permisoL5 = F )
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 52
-        mover
+    repetir 3
       {-}    
-      { ---- RECOLECTANDO :) ---- }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      si HayFlorEnLaEsquina
-        tomarFlor
-         {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(5,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoL5,O)
       {-}      
-      { Vuelvo al lugar de partida }
-      {-}    
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 52
-        mover
-      { Avisa al organizador para salida }
-      {-}    
-      enviarMensaje(9,O)
+      { concedido el permiso, va a recolectar a la esquina }
+      {-}
+      si (permisoL5 = F )
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 52
+          mover
+        {-}    
+        { ---- RECOLECTANDO :) ---- }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        si HayFlorEnLaEsquina
+          tomarFlor
+           {-}    
+        {-}      
+        { Vuelvo al lugar de partida }
+        {-}    
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 52
+          mover
+        { Avisa al organizador para salida }
+        {-}    
+        enviarMensaje(9,O)
   fin
   robot lector6
   variables
     permisoL6: boolean
     valor: numero
-    contadorL6: numero
   comenzar
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(6,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoL6,O)
-    {-}      
-    { concedido el permiso, va a recolectar a la esquina }
-    {-}
-    si (permisoL6 = F )
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 53
-        mover
+    repetir 3
       {-}    
-      { ---- RECOLECTANDO :) ---- }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      si HayFlorEnLaEsquina
-        tomarFlor
-         {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(6,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoL6,O)
       {-}      
-      { Vuelvo al lugar de partida }
-      {-}    
-      repetir 3
-        derecha
-      repetir 35
-        mover
-      repetir 3
-        derecha
-      repetir 53
-        mover
-      { Avisa al organizador para salida }
-      {-}    
-      enviarMensaje(9,O)
+      { concedido el permiso, va a recolectar a la esquina }
+      {-}
+      si (permisoL6 = F )
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 53
+          mover
+        {-}    
+        { ---- RECOLECTANDO :) ---- }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        si HayFlorEnLaEsquina
+          tomarFlor
+           {-}    
+        {-}      
+        { Vuelvo al lugar de partida }
+        {-}    
+        repetir 3
+          derecha
+        repetir 35
+          mover
+        repetir 3
+          derecha
+        repetir 53
+          mover
+        { Avisa al organizador para salida }
+        {-}    
+        enviarMensaje(9,O)
   fin
   robot escritor1
   variables
     permisoE1: boolean
     plantadas1:numero
   comenzar
-    plantadas1 := 0
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(10,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoE1,O)
-    {-}            
-    { concedido el permiso, va a sembrar a la esquina }
-    {-}
-    si ( permisoE1 = F )
-      repetir 3
-        derecha
-      repetir 45
-        mover
-      repetir 3
-        derecha
-      repetir 58
-        mover
-      repetir 3
-        derecha
-      {-}      
-      { empieza el sembrado :) }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      mientras plantadas1 < 6
-        bloquearEsquina(PosAv,PosCa)
-        depositarFlor
-        liberarEsquina(PosAv,PosCa)
-        plantadas1 := plantadas1 + 1
-        mover
-        {-}
-      { Vuelvo al lugar de partida }    
-      {-}
-      repetir 39
-        mover
-      repetir 3
-        derecha
-      repetir 58
-        mover
-      { Avisa al organizador para salida }
-      {-}
-      enviarMensaje(9,O)
+    repetir 3
+      plantadas1 := 0
       {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(10,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoE1,O)
+      {-}            
+      { concedido el permiso, va a sembrar a la esquina }
+      {-}
+      si ( permisoE1 = F )
+        repetir 3
+          derecha
+        repetir 45
+          mover
+        repetir 3
+          derecha
+        repetir 58
+          mover
+        repetir 3
+          derecha
+        {-}      
+        { empieza el sembrado :) }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        mientras (plantadas1 < 6)
+          bloquearEsquina(PosAv,PosCa)
+          depositarFlor
+          liberarEsquina(PosAv,PosCa)
+          plantadas1 := plantadas1 + 1
+          mover
+          {-}
+        { Vuelvo al lugar de partida }    
+        {-}
+        repetir 39
+          mover
+        repetir 3
+          derecha
+        repetir 58
+          mover
+        { Avisa al organizador para salida }
+        {-}
+        enviarMensaje(9,O)
+        {-}    
   fin
   robot escritor2
   variables
     permisoE2: boolean
     plantadas2:numero
   comenzar
-    plantadas2 := 0
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(11,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoE2,O)
-    {-}            
-    { concedido el permiso, va a sembrar a la esquina }
-    {-}
-    si ( permisoE2 = F )
-      repetir 3
-        derecha
-      repetir 45
-        mover
-      repetir 3
-        derecha
-      repetir 59
-        mover
-      repetir 3
-        derecha
-      {-}      
-      { empieza el sembrado :) }
-      {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      mientras plantadas2 < 6
-        bloquearEsquina(PosAv,PosCa)
-        depositarFlor
-        liberarEsquina(PosAv,PosCa)
-        plantadas2 := plantadas2 + 1
-        mover
-        {-}
-      { Vuelvo al lugar de partida }    
-      {-}
-      repetir 40
-        mover
-      repetir 3
-        derecha
-      repetir 59
-        mover
-      {Lo deposito en su esquina inicial mirando al norte}
-      repetir 3
-        derecha
-      mover
-      derecha
-      { Avisa al organizador para salida }
-      {-}
-      enviarMensaje(9,O)
+    repetir 3
+      plantadas2 := 0
       {-}    
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(11,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoE2,O)
+      {-}            
+      { concedido el permiso, va a sembrar a la esquina }
+      {-}
+      si ( permisoE2 = F )
+        repetir 3
+          derecha
+        repetir 45
+          mover
+        repetir 3
+          derecha
+        repetir 59
+          mover
+        repetir 3
+          derecha
+        {-}      
+        { empieza el sembrado :) }
+        {-}
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        mientras plantadas2 < 6
+          bloquearEsquina(PosAv,PosCa)
+          depositarFlor
+          liberarEsquina(PosAv,PosCa)
+          plantadas2 := plantadas2 + 1
+          mover
+          {-}
+        { Vuelvo al lugar de partida }    
+        {-}
+        repetir 40
+          mover
+        repetir 3
+          derecha
+        repetir 59
+          mover
+        {Lo deposito en su esquina inicial mirando al norte}
+        repetir 3
+          derecha
+        mover
+        derecha
+        { Avisa al organizador para salida }
+        {-}
+        enviarMensaje(9,O)
+        {-}    
   fin
   robot escritor3
   variables
     permisoE3: boolean
     plantadas3:numero
   comenzar
-    plantadas3 := 0
-    {-}    
-    { PIDO PERMISO PARA ENTRAR }
-    {-}     
-    enviarMensaje(12,O) { envia identificador propio }
-    enviarMensaje(7,O) { envia la operacion para pedir permiso }
-    recibirMensaje(permisoE3,O)
-    {-}            
-    { concedido el permiso, va a sembrar a la esquina }
-    {-}
-    si ( permisoE3 = F )
-      repetir 3
-        derecha
-      repetir 45
-        mover
-      repetir 3
-        derecha
-      repetir 60
-        mover
-      repetir 3
-        derecha
-      {-}      
-      { empieza el sembrado :) }
+    repetir 3
+      plantadas3 := 0
+      {-}   
+      { PIDO PERMISO PARA ENTRAR }
+      {-}     
+      enviarMensaje(12,O) { envia identificador propio }
+      enviarMensaje(7,O) { envia la operacion para pedir permiso }
+      recibirMensaje(permisoE3,O)
+      {-}            
+      { concedido el permiso, va a sembrar a la esquina }
       {-}
-      enviarMensaje(8,O) { Envio seÃ±al para entrar }
-      mientras plantadas3 < 6
-        bloquearEsquina(PosAv,PosCa)
-        depositarFlor
-        liberarEsquina(PosAv,PosCa)
-        plantadas3 := plantadas3 + 1
-        mover
+      si ( permisoE3 = F )
+        repetir 3
+          derecha
+        repetir 45
+          mover
+        repetir 3
+          derecha
+        repetir 60
+          mover
+        repetir 3
+          derecha
+        {-}      
+        { empieza el sembrado :) }
         {-}
-      { Vuelvo al lugar de partida }    
-      {-}
-      repetir 40
+        enviarMensaje(8,O) { Envio seÃ±al para entrar }
+        mientras plantadas3 < 6
+          bloquearEsquina(PosAv,PosCa)
+          depositarFlor
+          liberarEsquina(PosAv,PosCa)
+          plantadas3 := plantadas3 + 1
+          mover
+          {-}
+        { Vuelvo al lugar de partida }    
+        {-}
+        repetir 40
+          mover
+        repetir 3
+          derecha
+        repetir 60
+          mover
+        {Lo deposito en su esquina inicial mirando al norte}
+        repetir 3
+          derecha
         mover
-      repetir 3
         derecha
-      repetir 60
-        mover
-      {Lo deposito en su esquina inicial mirando al norte}
-      repetir 3
-        derecha
-      mover
-      derecha
-      { Avisa al organizador para salida }
-      {-}
-      enviarMensaje(9,O)
-      {-}    
+        { Avisa al organizador para salida }
+        {-}
+        enviarMensaje(9,O)
+        {-}    
   fin
 variables  
   E1: escritor1
