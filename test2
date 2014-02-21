@@ -1,0 +1,60 @@
+programa ADP  
+procesos  
+  proceso calculo(E posav : numero; E posca : numero; ES x : numero; ES y : numero) 
+  comenzar
+    x := 60 - posav + 45 { PosAv }
+    y := posca - 60 + 58 { PosCa }
+  fin 
+areas 
+  zonaC : areaC(15,2,20,3) 
+  zonaPC : areaPC(1,1,99,99) 
+robots 
+  robot escritor
+  variables
+    x : numero
+    y : numero
+  comenzar
+    x := 0
+    y := 0
+    calculo(PosAv,PosCa, x, y)
+    repetir 3 
+      derecha 
+    repetir x 
+      mover 
+    repetir 3 
+      derecha 
+    repetir y
+      mover 
+    repetir 3 
+      derecha 
+    repetir 6
+      enviarMensaje(V,O) { envia mensaje al organizador para bloquear el area }
+      bloquearEsquina(PosAv, PosCa) 
+      depositarFlor 
+      liberarEsquina(PosAv, PosCa)
+      enviarMensaje(F,O) { envia mensaje al organizador para liberar el area }
+      mover 
+  fin
+  robot organizador
+  variables
+    bloqueado : boolean { semaforo }
+    aux: boolean
+  comenzar
+    recibirMensaje(aux, E1) { el organizador recibe la peticion de escritura }
+    bloqueado := aux { enciende el semaforo }
+    recibirMensaje(aux, L1) { el lector pregunta si puede leer }
+    aux := bloqueado { aux toma el valor del semaforo }
+    enviarMensaje(aux, L1) { el organizador le reponde si puede o no leer }
+  fin
+variables  
+  E1: escritor
+  E2: escritor
+  O: organizador
+comenzar  
+  AsignarArea(E1,zonaPC)
+  AsignarArea(E2,zonaPC)
+  AsignarArea(O,zonaPC)
+  iniciar(O, 98, 98 )
+  iniciar(E1, 60, 60 )
+  iniciar(E2, 60, 61 )
+fin

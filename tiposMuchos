@@ -1,0 +1,131 @@
+programa ADP  
+{ No se hacen chequeos de si existe flores en la bolsa, por problemas con doble condiciones en la instruccion mientras.}
+areas 
+  zonaC : areaC(15,2,20,3) 
+  zonaPC : areaPC(1,1,99,99) 
+robots
+  robot organizador
+  variables
+    puedeLeer         : boolean
+    puedeLeerLector   : boolean
+    puedeEscribir     : boolean
+    res               : boolean
+    aux               : boolean
+  comenzar
+    { Para escribir no debe haber lectores/escritores }
+    recibirMensaje(res,E1)
+    enviarMensaje(puedeEscribir,SE)
+    enviarMensaje(puedeLeer,SL)
+    recibirMensaje(puedeEscribir,SE)
+    recibirMensaje(puedeLeer,SL)
+    res := (puedeLeer & puedeEscribir)
+    enviarMensaje(res,E1)
+  
+    { Para leer no debe haber escritores }
+    recibirMensaje( puedeLeerLector, L1)
+    enviarMensaje(  puedeLeerLector, SE) { consulta al semaforo de escritura }
+    recibirMensaje( puedeLeerLector, SE) { recibe la respuesta del sem de escritura }
+    enviarMensaje(  puedeLeerLector, L1)  { envia si puede o no leer }
+  fin
+  
+  robot semaforoLectura
+  variables
+    semaforoL   : boolean
+    puede       : boolean
+  comenzar
+    recibirMensaje(puede, O)
+    puede := ~semaforoL
+    enviarMensaje(puede,O)
+  fin
+  
+  robot semaforoEscritura
+  variables
+    semaforoE   : boolean
+    puede       : boolean
+    escribo     : boolean
+  comenzar
+    recibirMensaje(puede, O)
+    puede := ~semaforoE
+    enviarMensaje(puede, O)
+    recibirMensaje(escribo, E1)
+    semaforoE := escribo
+  fin
+  
+  robot lector1
+  variables
+    puedoLeer : boolean
+  comenzar
+    repetir 3
+      derecha
+    repetir 35
+      mover
+    repetir 3
+      derecha
+    repetir 48
+      mover
+    { chequea si hay un robot escribiendo }
+    enviarMensaje(puedoLeer,O)
+    recibirMensaje(puedoLeer,O)
+    si puedoLeer
+      si HayFlorEnLaEsquina
+        tomarFlor
+    repetir 3
+      derecha
+    repetir 35
+      mover
+    repetir 3
+      derecha
+    repetir 48
+      mover
+  fin
+  
+  robot escritor1
+  variables
+    plantadas     : numero
+    puedoEscribir : boolean
+  comenzar
+    enviarMensaje(puedoEscribir, O)
+    recibirMensaje(puedoEscribir, O)
+    Informar(puedoEscribir)
+    { se valida que no haya lectores/escritores }
+    mientras ~puedoEscribir
+      enviarMensaje(puedoEscribir, O)
+      recibirMensaje(puedoEscribir, O)
+    repetir 3
+      derecha
+    repetir 45
+      mover
+    repetir 3
+      derecha
+    repetir 58
+      mover
+    repetir 3
+      derecha
+    { empieza el sembrado :) }
+    enviarMensaje(V,SE)
+    mientras plantadas < 5
+      bloquearEsquina(PosAv,PosCa)
+      depositarFlor
+      liberarEsquina(PosAv,PosCa)
+      plantadas := plantadas + 1
+      mover
+    enviarMensaje(F,SE)
+  fin
+variables  
+  E1: escritor1
+  L1: lector1
+  SE: semaforoEscritura
+  SL: semaforoLectura
+  O: organizador
+comenzar  
+  AsignarArea(E1,zonaPC)
+  AsignarArea(SE,zonaPC)
+  AsignarArea(SL,zonaPC)
+  AsignarArea(O,zonaPC)
+  AsignarArea(L1,zonaPC)
+  iniciar(SE,91,91)
+  iniciar(SL,92,92)
+  iniciar(O, 90, 90)
+  iniciar(E1, 60, 60)
+  iniciar(L1, 50, 50)
+fin
