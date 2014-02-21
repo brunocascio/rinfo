@@ -44,7 +44,7 @@ robots
       Informar(op)
       si ( op = 7 ) { Pedir permiso }
         RL2 := SE1
-        mientras (RL1 = V )
+        mientras (RL2 = V )
           RL2 := SE1
         enviarMensaje(RL2,L2) { Envia el estado de los robots }
       recibirMensaje(op,L2)
