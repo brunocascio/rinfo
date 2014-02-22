@@ -1,0 +1,7 @@
+El programa se ejecuta correctamente y testeadas en distribuciones GNU/Linux emulando mediante WINE:
+Ubuntu x64
+Arch Linux x86
+
+No funciona en:
+
+Windows 7 x64
